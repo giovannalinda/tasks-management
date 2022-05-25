@@ -1,5 +1,11 @@
+import { GlobalStyle } from 'ui'
+
 function App() {
-  return <h1>Hello World! :D</h1>
+  return (
+    <>
+      <GlobalStyle />
+    </>
+  )
 }
 
 export default App
