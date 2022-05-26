@@ -1,8 +1,28 @@
-import { FiPlus } from 'react-icons/fi'
+import { useState } from 'react'
+import { FiPlus, FiTrash } from 'react-icons/fi'
 
 import * as S from './TaskList.styled'
 
+type Task = {
+  id: number
+  title: string
+  isComplete: boolean
+}
+
 export function TaskList() {
+  const [tasks, setTasks] = useState<Task[]>([])
+  const [newTaskTitle, setNewTaskTitle] = useState('')
+
+  function handleCreateNewTask() {
+    const newTask: Task = {
+      id: Math.random(),
+      title: newTaskTitle,
+      isComplete: false,
+    }
+    setTasks([...tasks, newTask])
+    setNewTaskTitle('')
+  }
+
   return (
     <S.Container>
       <S.Header>
@@ -11,11 +31,32 @@ export function TaskList() {
           <strong>.</strong>
         </h1>
 
-        <input type='text' placeholder='Add new task' />
-        <button type='submit'>
+        <input
+          type='text'
+          placeholder='Add new task'
+          onChange={(e) => setNewTaskTitle(e.target.value)}
+          value={newTaskTitle}
+        />
+        <button type='submit' onClick={handleCreateNewTask}>
           <FiPlus size={14} />
         </button>
       </S.Header>
+
+      <main>
+        <ul>
+          {tasks.map((task) => (
+            <li key={task.id}>
+              <div>
+                <input type='checkbox' name='' id='' />
+                <p>{task.title}</p>
+                <button type='button'>
+                  <FiTrash />
+                </button>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </main>
     </S.Container>
   )
 }
