@@ -23,6 +23,10 @@ export function TaskList() {
     setNewTaskTitle('')
   }
 
+  function handleDeleteTask(id: number) {
+    setTasks((tasks) => tasks.filter((task) => task.id !== id))
+  }
+
   return (
     <S.Container>
       <S.Header>
@@ -49,7 +53,7 @@ export function TaskList() {
               <div>
                 <input type='checkbox' name='' id='' />
                 <p>{task.title}</p>
-                <button type='button'>
+                <button type='button' onClick={() => handleDeleteTask(task.id)}>
                   <FiTrash />
                 </button>
               </div>
