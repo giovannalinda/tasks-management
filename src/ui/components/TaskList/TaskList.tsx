@@ -27,6 +27,14 @@ export function TaskList() {
     setTasks((tasks) => tasks.filter((task) => task.id !== id))
   }
 
+  function handleOnChange(id: number) {
+    setTasks((prevState) =>
+      prevState.map((task) =>
+        task.id === id ? { ...task, isComplete: !task.isComplete } : task,
+      ),
+    )
+  }
+
   return (
     <S.Container>
       <S.Header>
@@ -46,21 +54,23 @@ export function TaskList() {
         </button>
       </S.Header>
 
-      <main>
+      <S.TaskContainer>
         <ul>
           {tasks.map((task) => (
-            <li key={task.id}>
-              <div>
-                <input type='checkbox' name='' id='' />
-                <p>{task.title}</p>
-                <button type='button' onClick={() => handleDeleteTask(task.id)}>
-                  <FiTrash />
-                </button>
-              </div>
-            </li>
+            <S.TaskItem key={task.id} checked={task.isComplete}>
+              <input
+                type='checkbox'
+                checked={task.isComplete}
+                onChange={() => handleOnChange(task.id)}
+              />
+              <span>{task.title}</span>
+              <button type='button' onClick={() => handleDeleteTask(task.id)}>
+                <FiTrash />
+              </button>
+            </S.TaskItem>
           ))}
         </ul>
-      </main>
+      </S.TaskContainer>
     </S.Container>
   )
 }

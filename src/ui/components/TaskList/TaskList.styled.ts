@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { theme } from 'config'
 
 export const Container = styled.div`
@@ -58,4 +58,27 @@ export const Header = styled.header`
       opacity: 85%;
     }
   }
+`
+
+export const TaskContainer = styled.main`
+  ul {
+    list-style: none;
+  }
+`
+
+type TaskItemProps = {
+  checked: boolean
+}
+
+export const TaskItem = styled.li<TaskItemProps>`
+  display: flex;
+  align-items: center;
+
+  ${({ checked }) =>
+    checked &&
+    css`
+      span {
+        text-decoration: line-through;
+      }
+    `}
 `
