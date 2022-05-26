@@ -5,7 +5,8 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 180px 0 0 0;
+  flex-direction: column;
+  margin: 140px 0 0 0;
 `
 
 export const Header = styled.header`
@@ -27,9 +28,10 @@ export const Header = styled.header`
     background: ${theme.colors.gray[700]};
     border: 1px solid ${theme.colors.gray[900]};
     border-radius: ${theme.radius};
-    padding: 0 32px;
+    padding: 0 72px 0 32px;
     color: ${theme.colors.white};
     transition: border-color 0.2s ease-in;
+    margin: 0 0 10px 0;
 
     @media (max-width: 400px) {
       width: 300px;
@@ -54,6 +56,11 @@ export const Header = styled.header`
     border-radius: 0 5px 5px 0;
     margin: 0 0 0 -54px;
 
+    &[disabled] {
+      cursor: not-allowed;
+      opacity: 65%;
+    }
+
     :hover {
       opacity: 85%;
     }
@@ -62,7 +69,18 @@ export const Header = styled.header`
 
 export const TaskContainer = styled.main`
   ul {
+    max-height: 350px;
     list-style: none;
+    overflow-y: scroll;
+    margin: 0 0 0 15px;
+
+    &::-webkit-scrollbar {
+      height: 0;
+    }
+
+    @media (max-width: 400px) {
+      width: 320px;
+    }
   }
 `
 
@@ -73,12 +91,45 @@ type TaskItemProps = {
 export const TaskItem = styled.li<TaskItemProps>`
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  background: ${theme.colors.gray[700]};
+  width: 382px;
+  height: 77px;
+  margin: 10px 0 0 0;
+  border-radius: ${theme.radius};
+  padding: 20px;
+  border: 1px solid ${theme.colors.gray[900]};
+  transition: border-color 0.2s ease-in;
+
+  & + li {
+    margin: 6px 0 0 0;
+  }
+
+  :hover {
+    border-color: ${theme.colors.purple[600]};
+  }
 
   ${({ checked }) =>
     checked &&
     css`
       span {
         text-decoration: line-through;
+        opacity: 67%;
       }
     `}
+
+  span {
+    font-size: 14px;
+  }
+
+  button {
+    background: none;
+    border: none;
+    color: ${theme.colors.purple[600]};
+  }
+`
+
+export const Footer = styled.footer`
+  margin: 15px 0 10px 0;
+  font-size: 14px;
 `

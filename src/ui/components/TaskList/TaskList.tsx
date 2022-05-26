@@ -48,8 +48,14 @@ export function TaskList() {
           placeholder='Add new task'
           onChange={(e) => setNewTaskTitle(e.target.value)}
           value={newTaskTitle}
+          maxLength={40}
         />
-        <button type='submit' onClick={handleCreateNewTask}>
+        <button
+          type='submit'
+          onClick={handleCreateNewTask}
+          title='Add task to do?'
+          disabled={newTaskTitle.length === 0}
+        >
           <FiPlus size={14} />
         </button>
       </S.Header>
@@ -64,13 +70,19 @@ export function TaskList() {
                 onChange={() => handleOnChange(task.id)}
               />
               <span>{task.title}</span>
-              <button type='button' onClick={() => handleDeleteTask(task.id)}>
-                <FiTrash />
+              <button
+                type='button'
+                onClick={() => handleDeleteTask(task.id)}
+                title='Remove task?'
+              >
+                <FiTrash size={18} />
               </button>
             </S.TaskItem>
           ))}
         </ul>
       </S.TaskContainer>
+
+      <S.Footer>Made with 💜 by Giovanna</S.Footer>
     </S.Container>
   )
 }
