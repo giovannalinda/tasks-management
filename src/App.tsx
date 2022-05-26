@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { GlobalStyle } from 'ui'
 import { CreateTask } from 'ui/components/CreateTask'
 import { Logo } from 'ui/components/Logo'
@@ -13,8 +13,20 @@ export type Task = {
 }
 
 function App() {
-  const [tasks, setTasks] = useState<Task[]>([])
+  const [tasks, setTasks] = useState<Task[]>(() => {
+    const storagedTasks = localStorage.getItem('tasks')
+
+    if (storagedTasks) {
+      return JSON.parse(storagedTasks)
+    }
+
+    return []
+  })
   const [newTaskTitle, setNewTaskTitle] = useState('')
+
+  useEffect(() => {
+    localStorage.setItem('tasks', JSON.stringify(tasks))
+  }, [tasks])
 
   function handleCreateNewTask() {
     const newTask: Task = {
