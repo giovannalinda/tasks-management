@@ -6,7 +6,7 @@ export const Container = styled.div`
   margin: 0 auto;
   max-width: 382px;
   height: 100vh;
-  padding: 140px 0 20px;
+  padding: 120px 0 20px;
 
   > footer {
     text-align: center;

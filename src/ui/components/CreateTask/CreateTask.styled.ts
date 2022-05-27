@@ -17,6 +17,7 @@ export const Input = styled.input`
   padding: 0 32px;
   color: ${theme.colors.white};
   transition: border-color 0.2s ease-in;
+  outline: 0;
 
   @media (max-width: 400px) {
     width: 300px;
@@ -39,6 +40,7 @@ export const Button = styled.button`
   width: 54px;
   border: none;
   border-radius: 0 5px 5px 0;
+  outline-color: ${theme.colors.purple[600]};
 
   &[disabled] {
     cursor: not-allowed;

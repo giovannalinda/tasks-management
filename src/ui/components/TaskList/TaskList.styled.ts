@@ -57,6 +57,11 @@ export const TaskItem = styled.li<TaskItemProps>`
       }
     `}
 
+  input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+  }
+
   span {
     font-size: 14px;
   }
