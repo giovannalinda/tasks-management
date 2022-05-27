@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+
 import { GlobalStyle } from 'ui'
 import { CreateTask } from 'ui/components/CreateTask'
 import { Logo } from 'ui/components/Logo'
@@ -34,7 +35,7 @@ function App() {
       title: newTaskTitle,
       isComplete: false,
     }
-    setTasks([...tasks, newTask])
+    setTasks([newTask, ...tasks])
     setNewTaskTitle('')
   }
 

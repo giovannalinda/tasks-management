@@ -20,7 +20,8 @@ export const Input = styled.input`
   outline: 0;
 
   @media (max-width: 400px) {
-    width: 300px;
+    margin: 0 0 0 10px;
+    width: 260px;
   }
 
   :focus {
@@ -38,7 +39,6 @@ export const Button = styled.button`
   background: ${theme.colors.purple[600]};
   height: 49px;
   width: 54px;
-  border: none;
   border-radius: 0 5px 5px 0;
   outline-color: ${theme.colors.purple[600]};
 
@@ -49,5 +49,9 @@ export const Button = styled.button`
 
   :hover {
     opacity: 85%;
+  }
+
+  @media (max-width: 400px) {
+    width: 42px;
   }
 `
