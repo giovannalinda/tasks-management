@@ -30,7 +30,7 @@ export function CreateTask({
       />
       <S.Button
         type='submit'
-        title='Add task to do?'
+        title='Add task to do'
         disabled={newTaskTitle.length === 0}
       >
         <FiPlus size={14} />

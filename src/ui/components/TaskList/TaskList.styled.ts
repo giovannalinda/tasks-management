@@ -9,7 +9,7 @@ export const Header = styled.header`
 `
 
 export const Container = styled.ul`
-  max-height: 350px;
+  max-height: 320px;
   list-style: none;
   overflow-y: scroll;
   display: flex;
